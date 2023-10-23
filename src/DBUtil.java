@@ -54,7 +54,7 @@ public class DBUtil {
 		System.out.println();
 		System.out.println("[게시판 목록]");
 		System.out.println("-----------------------------------------------------------------");
-		System.out.printf("%-6s%-12s%-16s%-40s\n", "no", "writer", "date", "title"); // ??? 형식문자열. %-6s : 6자리 정수, 오른쪽 빈자리 공백
+		System.out.printf("%-6s%-12s%-40s%-40s\n", "no", "writer", "date", "title"); // ??? 형식문자열. %-6s : 6자리 정수, 오른쪽 빈자리 공백
 		System.out.println("-----------------------------------------------------------------");
 	}
 
@@ -65,6 +65,7 @@ public class DBUtil {
 	}
 
 	public void createSubMenu(){
+		System.out.println("-----------------------------------------------------------------");
 		System.out.println("보조 메뉴 : 1.Ok | 2.Cancel");
 		System.out.print("메뉴 선택 : ");
 	}

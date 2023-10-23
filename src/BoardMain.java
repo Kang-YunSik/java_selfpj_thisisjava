@@ -19,6 +19,7 @@ public class BoardMain {
 		ArrayList<BoardVO> boardList = db.getBoard();
 		NowBoard nowBoard = new NowBoard();
 		nowBoard.printNowBoard(boardList);
+
 		db.mainMenu();
 
 		while(true){
@@ -38,20 +39,21 @@ public class BoardMain {
 				System.out.print("작성자: ");
 				String bwriter = scan.nextLine();
 
-				System.out.println("-----------------------------------------------------------------");
 				db.createSubMenu();
 				String createSubMenuNo = scan.nextLine();
 				switch (createSubMenuNo){
 					case "1" :
 						db.insertBoard(btitle, bcontent, bwriter);
 						System.out.println("[게시물 등록 완료]");
-						db.mainMenu();
 						break;
 					case "2":
 						System.out.println("[게시물 등록 취소]");
-						db.mainMenu();
 						break;
 				}
+				System.out.println("-----------------------------------------------------------------");
+				NowBoard addBoard = new NowBoard();
+				addBoard.printNowBoard(boardList);
+				db.mainMenu();
 
 			}
 

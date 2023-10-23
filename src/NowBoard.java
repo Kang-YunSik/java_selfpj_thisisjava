@@ -4,10 +4,11 @@ public class NowBoard {
     public void printNowBoard(ArrayList<BoardVO> boardVOList) {
 
         for(int i = 0; i < boardVOList.size(); i++) {
-            System.out.println("번호 : " + boardVOList.get(i).getBno());
-            System.out.println("이름 : " + boardVOList.get(i).getBwriter());
-            System.out.println("번호 : " + boardVOList.get(i).getBdate());
-            System.out.println("제목 : " + boardVOList.get(i).getBtitle());
+            System.out.printf("%-6s%-12s%-40s%-40s\n",
+                    boardVOList.get(i).getBno(),
+                    boardVOList.get(i).getBwriter(),
+                    boardVOList.get(i).getBdate(),
+                    boardVOList.get(i).getBtitle());
         }
     }
 }
