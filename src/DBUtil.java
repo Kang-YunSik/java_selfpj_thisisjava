@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 // DB연동 설정파일 (jdbc: mariadb / framework: Mybatis)
 public class DBUtil {
@@ -39,5 +40,30 @@ public class DBUtil {
 		mapper.insertBoard(boardVO);
 
 		session.commit(); // update, delete, insert
+	}
+
+	public void homeBoard(){
+		System.out.println();
+		System.out.println("[게시판 목록]");
+		System.out.println("-----------------------------------------------------------------");
+		System.out.printf("%-6s%-12s%-16s%-40s\n", "no", "writer", "date", "title"); // ??? 형식문자열. %-6s : 6자리 정수, 오른쪽 빈자리 공백
+		System.out.println("-----------------------------------------------------------------");
+	}
+
+	public void mainMenu(){
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println("메인 메뉴 : 1.create | 2.read | 3.clear | 4.exit");
+		System.out.print("메뉴 선택 : ");
+	}
+
+	public void createSubMenu(){
+		System.out.println("보조 메뉴 : 1.Ok | 2.Cancel");
+		System.out.print("메뉴 선택 : ");
+	}
+
+	public void exit(){
+		System.out.println();
+		System.out.println("게시판 기능을 종료합니다. 이용해주셔서 감사합니다.");
+		System.exit(0);
 	}
 }
