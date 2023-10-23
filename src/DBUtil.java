@@ -1,10 +1,8 @@
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 
 // DB연동 설정파일 (jdbc: mariadb / framework: Mybatis)
 public class DBUtil {
@@ -15,54 +13,18 @@ public class DBUtil {
 	String pass = "12345"; // 비밀번호
 	SqlSessionFactory sqlSessionFactory; // mybatis SqlSessionFactory 필드 생성
 
-	// init 메서드 정의
-	// SqlSessionFactory 빌드가 잘 되었는지 확인(마이바티스 연동이 잘 되었는지)
-	//
-	public void init() {
+
+	public void init(){
 		try {
-			// SqlSessionFactory 빌드하기
 			String resource = "mybatis-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
+
+			// SqlSessionFactory 빌드하기
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		} catch (Exception e) {
 			System.out.println("MyBatis 설정 파일 가져오는 중 문제 발생!!");
-			e.printStackTrace();
+			e.printStackTrace(); // printStackTrace() : 예외가 발생하면 예외 족적(발자취)을 남긴다.
 		}
 	}
-
-	public ArrayList<Addr> getAddresses() {
-		SqlSession session = sqlSessionFactory.openSession();
-		AddrMapper mapper = session.getMapper(AddrMapper.class);
-		ArrayList<Addr> addrList = mapper.getAddresses();
-
-		return addrList;
-	}
-
-	public void insertAddress(String name, String address, String phone) {
-		SqlSession session = sqlSessionFactory.openSession();
-		AddrMapper mapper = session.getMapper(AddrMapper.class);
-		Addr addr = new Addr(name, address, phone);
-		mapper.insertAddress(addr);
-
-		session.commit(); // update, delete, insert
-	}
-
-	public void updateAddress(int id, String name, String address, String phone) {
-		SqlSession session = sqlSessionFactory.openSession();
-		AddrMapper mapper = session.getMapper(AddrMapper.class);
-		Addr addr = new Addr(id, name, address, phone);
-		mapper.updateAddress(addr);
-
-		session.commit(); // update, delete, insert
-	}
-
-	public void deleteAddress(int id) {
-		SqlSession session = sqlSessionFactory.openSession();
-		AddrMapper mapper = session.getMapper(AddrMapper.class);
-		mapper.deleteAddress(id);
-
-		session.commit(); // update, delete, insert
-	}
-	
 }
