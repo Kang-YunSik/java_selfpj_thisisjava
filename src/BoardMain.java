@@ -9,11 +9,16 @@ public class BoardMain {
 		DBUtil db = new DBUtil();
 		Scanner scan = new Scanner(System.in);
 
+
 		db.init();
 		// 생성자
 
 		// 타이틀 및 컬럼명 출력
 		db.homeBoard();
+
+		ArrayList<BoardVO> boardList = db.getBoard();
+		NowBoard nowBoard = new NowBoard();
+		nowBoard.printNowBoard(boardList);
 		db.mainMenu();
 
 		while(true){

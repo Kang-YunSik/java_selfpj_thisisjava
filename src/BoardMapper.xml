@@ -11,30 +11,11 @@
 		`bcontent` = #{bcontent},
 		`bwriter` = #{bwriter}
     </insert>
-<!--    -->
-<!--    <insert id="insertAddress" parameterType="Addr">-->
-<!--    	INSERT INTO t_address-->
-<!--    	SET `name` = #{name},-->
-<!--    	address = #{address},-->
-<!--    	phone = #{phone}-->
-<!--    </insert >-->
-<!--  	-->
-<!--  	<update id="updateAddress" parameterType="Addr">-->
-<!--  		UPDATE t_address-->
-<!--  		SET `name` = #{name},-->
-<!--    	address = #{address},-->
-<!--    	phone = #{phone}-->
-<!--    	WHERE id = #{id}-->
-<!--  	</update>-->
+	<select id="getBoard" resultType="BoardVO">
+		SELECT *
+		FROM boards
+		ORDER BY bno DESC
+	</select>
 
-<!--	<select id="selectAddress" parameterType="Addr">-->
-<!--		SELECT address-->
-<!--		FROM t_address-->
-<!--	</select>-->
-<!--  	-->
-<!--  	<delete id="deleteAddress" parameterType="int">-->
-<!--  		DELETE FROM t_address-->
-<!--  		WHERE id = #{id}-->
-<!--  	</delete>-->
   
 </mapper>

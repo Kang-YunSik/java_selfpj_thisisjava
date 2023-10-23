@@ -42,6 +42,14 @@ public class DBUtil {
 		session.commit(); // update, delete, insert
 	}
 
+	public ArrayList<BoardVO> getBoard(){
+		SqlSession session = sqlSessionFactory.openSession();
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		ArrayList<BoardVO> boardVOList = mapper.getBoard();
+
+		return boardVOList;
+	}
+
 	public void homeBoard(){
 		System.out.println();
 		System.out.println("[게시판 목록]");
