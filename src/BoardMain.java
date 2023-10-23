@@ -22,22 +22,30 @@ public class BoardMain {
 		System.out.print("메뉴 선택 : ");
 
 		while(true){
+			String cmd = scan.nextLine();
 
+			// 입력이 4면 종료
+			if(cmd.equals("4")) {
+				System.out.println();
+				System.out.println("게시판 기능을 종료합니다. 이용해주셔서 감사합니다.");
+				break;
 
-			// 입력이 1이거나 creat이면 insertBoard 실행
-			if (scan.nextLine().equals("1")){
+			 // 입력이 1이면 게시판 작성 기능 실행
+			} else if (cmd.equals("1") || cmd.equals("create")){
 				System.out.println("[새 게시물 입력]");
-				System.out.println("제목: ");
+				System.out.print("제목: ");
 				String btitle = scan.nextLine();
-				System.out.println("내용: ");
+				System.out.print("내용: ");
 				String bcontent = scan.nextLine();
-				System.out.println("작성자: ");
+				System.out.print("작성자: ");
 				String bwriter = scan.nextLine();
 
 				db.insertBoard(btitle, bcontent, bwriter);
 
 				System.out.println("게시물 등록 완료.");
-				System.out.println("============================");
+				System.out.println("-----------------------------------------------------------------");
+				System.out.println("메인 메뉴 : 1.create | 2.read | 3.clear | 4.exit");
+				System.out.print("메뉴 선택 : ");
 			}
 		}
 
