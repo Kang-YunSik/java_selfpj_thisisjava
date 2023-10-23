@@ -8,7 +8,7 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="org.mariadb.jdbc.Driver"/>
-        <property name="url" value="jdbc:mariadb://127.0.0.1:3306/addr_prj"/>
+        <property name="url" value="jdbc:mariadb://127.0.0.1:3306/java_selfpj_thisisjava"/>
         <property name="username" value="root"/>
         <property name="password" value="12345"/>
       </dataSource>
