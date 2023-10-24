@@ -2,6 +2,7 @@
 1. BoardVO 클래스에서 BoardVO메소드를 선언할 때 
     매개변수 개수별로 여러개 선언하던데 맞는건지? (어떤 개념인건지)
 2. interface 개념
+   1. 제네릭으로 정의한건 뭐고, 클래스로 정의한건 뭐고 
 3. Mapper.xml에서 Mybatis 속성 값 (resultType, parameterType 등등)
 4. Mybatis 클래스인지 뭔지, DBUtil 클래스 해석
    1. public void updateBoard(int bno, String btitle, String bcontent, String bwriter){
