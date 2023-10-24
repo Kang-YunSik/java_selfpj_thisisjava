@@ -102,6 +102,14 @@ public class BoardMain {
 				// 메인 메뉴 출력
 				db.mainMenu();
 
+			} else if(cmd.equals("2")){
+				System.out.println("[게시물 읽기]");
+				System.out.print("bno: ");
+
+				int bno = Integer.parseInt(scan.nextLine());
+				boardList = db.readBoard(bno);
+				db.readBnoBoard(boardList);
+
 			}
 
 //			else if (cmd.equals("2")) {

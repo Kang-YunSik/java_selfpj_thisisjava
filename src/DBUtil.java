@@ -54,11 +54,12 @@ public class DBUtil {
 	}
 
 	// read 메소드
-	public void readBoard(int bno){
+	public ArrayList<BoardVO> readBoard(int bno){
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		ArrayList<BoardVO> boardVOList = mapper.readBoard(bno);
 
-		session.commit();
+		return boardVOList;
 	}
 
 	public void deleteBoard(int bno) {
@@ -111,15 +112,16 @@ public class DBUtil {
 		}
 	}
 
-//	public void readBnoRead(ArrayList<BoardVO> boardVOList){
-//
-//			System.out.println("#############");
-//			System.out.println("번호 : " + boardVOList.get(bno).getBno());
-//			System.out.println("이름 : " + boardVOList.get(bno).getBtitle());
-//			System.out.println("주소 : " + boardVOList.get(bno).getBcontent());
-//			System.out.println("번호 : " + boardVOList.get(bno).getBwriter());
-//			System.out.println("번호 : " + boardVOList.get(bno).getBdate());
-//			System.out.println("#############");
-//
-//	}
+
+	public void readBnoBoard(ArrayList<BoardVO> boardVOList){
+
+			System.out.println("#######################################");
+			System.out.println("번호: " + boardVOList.get(0).getBno());
+			System.out.println("제목: " + boardVOList.get(0).getBtitle());
+			System.out.println("내용: " + boardVOList.get(0).getBcontent());
+			System.out.println("작성자: " + boardVOList.get(0).getBwriter());
+			System.out.println("날짜: " + boardVOList.get(0).getBdate());
+			System.out.println("#######################################");
+
+	}
 }
