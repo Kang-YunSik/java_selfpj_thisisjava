@@ -24,15 +24,15 @@ public class BoardMain {
 
 		db.mainMenu();
 
-		while(true){
+		while(true) {
 			String cmd = scan.nextLine();
 
 			// 입력이 4면 종료
-			if(cmd.equals("4")) {
+			if (cmd.equals("4")) {
 				db.exit();
 
-			 // 게시판 작성 기능 실행
-			} else if (cmd.equals("1") || cmd.equals("create")){
+				// 게시판 작성 기능 실행
+			} else if (cmd.equals("1") || cmd.equals("create")) {
 				System.out.println("[새 게시물 입력]");
 				System.out.print("제목: ");
 				String btitle = scan.nextLine();
@@ -47,8 +47,8 @@ public class BoardMain {
 				String createSubMenuNo = scan.nextLine();
 
 				// 입력값에 따른 하위 메뉴 실행
-				switch (createSubMenuNo){
-					case "1" :
+				switch (createSubMenuNo) {
+					case "1":
 						db.insertBoard(btitle, bcontent, bwriter);
 						System.out.println("[게시물 등록 완료]");
 
@@ -71,19 +71,51 @@ public class BoardMain {
 				// 메인 메뉴 출력
 				db.mainMenu();
 
-			} else if (cmd.equals("2")) {
-				System.out.println();
-				System.out.println("[게시글 읽기]");
+			} else if (cmd.equals("5")) {
+				System.out.println("[게시물 삭제]");
 				System.out.print("bno: ");
-				String bno = scan.nextLine();
+				int bno = Integer.parseInt(scan.nextLine());
 
+				System.out.println(bno + "번째 게시물을 삭제하시겠습니까?");
+				db.createSubMenu();
+				String deleteSubMenuNo = scan.nextLine();
+				switch (deleteSubMenuNo) {
+					case "1":
+						db.deleteBoard(bno);
+						System.out.println(bno + "번째 게시물 삭제 완료");
 
-				db.readBoard(Integer.parseInt(bno));
+						// boardList 최신화
+						boardList = db.getBoard();
 
+						break;
+					case "2":
+						System.out.println("게시물 삭제 취소");
+						break;
+				}
 
+				// 게시판 틀 출력
+				db.homeBoard();
 
+				// add된 게시판 목록 출력
+				nowBoard.printNowBoard(boardList);
+
+				// 메인 메뉴 출력
+				db.mainMenu();
 
 			}
+
+//			else if (cmd.equals("2")) {
+//				System.out.println();
+//				System.out.println("[게시글 읽기]");
+//				System.out.print("bno: ");
+//				String bno = scan.nextLine();
+//
+//
+//				db.readBoard(Integer.parseInt(bno));
+//		}
+
+
+
 
 		}
 

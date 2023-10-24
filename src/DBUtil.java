@@ -57,9 +57,16 @@ public class DBUtil {
 	public void readBoard(int bno){
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
-		ArrayList<BoardVO> boardVOList = mapper.readBoard(bno);
 
-		return boardVOList;
+		session.commit();
+	}
+
+	public void deleteBoard(int bno) {
+		SqlSession session = sqlSessionFactory.openSession();
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		mapper.deleteBoard(bno);
+
+		session.commit(); // update, delete, insert
 	}
 
 	// 게시판 틀 출력 메소드
