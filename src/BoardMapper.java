@@ -4,6 +4,6 @@ public interface BoardMapper {
     public ArrayList<BoardVO> getBoard();
     public void insertBoard(BoardVO boardVO);
     public ArrayList<BoardVO> readBoard(int bno);
-
     public void deleteBoard(int bno);
+    public void updateBoard(BoardVO boardVO);
 }

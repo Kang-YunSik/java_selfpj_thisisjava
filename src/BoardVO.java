@@ -17,14 +17,22 @@ public class BoardVO {
         this.bdate = bdate;
     }
 
+    // 매개변수가 4개만 필요한 메소드
+    public BoardVO(int bno, String btitle, String bcontent, String bwriter) {
+        this.bno = bno;
+        this.btitle = btitle;
+        this.bcontent = bcontent;
+        this.bwriter = bwriter;
+    }
+
     // 매개변수가 3개만 필요한 메소드
     public BoardVO(String btitle, String bcontent, String bwriter) {
         this.btitle = btitle;
         this.bcontent = bcontent;
         this.bwriter = bwriter;
-        this.bdate = bdate;
     }
 
+    // 매개변수가 1개만 필요한 메소드
     public BoardVO(int bno) {
         this.bno = bno;
     }

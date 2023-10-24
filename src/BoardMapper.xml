@@ -8,10 +8,8 @@
 
 	<!-- insertBoard 메소드의 sql문 -->
     <insert id="insertBoard" parameterType="BoardVO">
-		INSERT INTO boards
-		SET `btitle` = #{btitle},
-		`bcontent` = #{bcontent},
-		`bwriter` = #{bwriter}
+		INSERT INTO boards (btitle, bcontent, bwriter)
+		VALUES (#{btitle}, #{bcontent}, #{bwriter})
     </insert>
 
 	<!-- getBoard 메소드의 sql문 -->
@@ -32,5 +30,12 @@
 		WHERE bno = #{bno}
 	</delete>
 
-  
+	<update id="updateBoard" parameterType="BoardVO">
+		UPDATE boards SET
+			btitle = #{btitle},
+			bcontent = #{bcontent},
+			bwriter = #{bwriter}
+		WHERE bno = #{bno}
+	</update>
+
 </mapper>

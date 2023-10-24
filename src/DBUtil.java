@@ -5,8 +5,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
 
 // DB연동 설정파일 (jdbc: mariadb / framework: Mybatis)
 public class DBUtil {
@@ -18,7 +16,7 @@ public class DBUtil {
 	SqlSessionFactory sqlSessionFactory; // mybatis SqlSessionFactory 필드 생성
 
 
-	// db 연동 확인 메소드
+	// db 연동 확인 메소드. 최초 실행 메소드
 	public void init(){
 		try {
 			String resource = "mybatis-config.xml";
@@ -34,7 +32,7 @@ public class DBUtil {
 
 	}
 
-	// Create 메소드
+	// 게시글 작성 메소드 (CREATE)
 	public void insertBoard(String btitle, String bcontent, String bwriter) {
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -44,7 +42,7 @@ public class DBUtil {
 		session.commit(); // update, delete, insert
 	}
 
-	// 게시판 목록 출력 메소드
+	// 게시판 목록 출력 메소드 (READ)
 	public ArrayList<BoardVO> getBoard(){
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -53,7 +51,7 @@ public class DBUtil {
 		return boardVOList;
 	}
 
-	// read 메소드
+	// 입력한 bno의 게시글을 읽는 메소드 (READ)
 	public ArrayList<BoardVO> readBoard(int bno){
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -62,6 +60,17 @@ public class DBUtil {
 		return boardVOList;
 	}
 
+	// 게시글 수정 메소드 (UPDATE)
+	public void updateBoard(int bno, String btitle, String bcontent, String bwriter){
+		SqlSession session = sqlSessionFactory.openSession();
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		BoardVO boardVO = new BoardVO(bno, btitle, bcontent, bwriter);
+		mapper.updateBoard(boardVO);
+
+		session.commit();
+	}
+
+	// 게시글 삭제 메소드 (DELETE)
 	public void deleteBoard(int bno) {
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -86,10 +95,17 @@ public class DBUtil {
 		System.out.print("메뉴 선택 : ");
 	}
 
-	// create의 서브메뉴 출력 메소드
-	public void createSubMenu(){
+	// OK 서브메뉴 메소드
+	public void okSubMenu(){
 		System.out.println("-----------------------------------------------------------------");
 		System.out.println("보조 메뉴 : 1.Ok | 2.Cancel");
+		System.out.print("메뉴 선택 : ");
+	}
+
+	// read의 서브메뉴 메소드
+	public void readSubMenu(){
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println("보조 메뉴 : 1.Update | 2.Delete | 3.List");
 		System.out.print("메뉴 선택 : ");
 	}
 
@@ -100,6 +116,7 @@ public class DBUtil {
 		System.exit(0);
 	}
 
+	// 게시판 출력 형식 메소드
 	public void printNowBoard(ArrayList<BoardVO> boardVOList) {
 
 		for(int i = 0; i < boardVOList.size(); i++) {
@@ -112,9 +129,8 @@ public class DBUtil {
 		}
 	}
 
-
+	// read의 게시글 출력 형식 메소드
 	public void readBnoBoard(ArrayList<BoardVO> boardVOList){
-
 			System.out.println("#######################################");
 			System.out.println("번호: " + boardVOList.get(0).getBno());
 			System.out.println("제목: " + boardVOList.get(0).getBtitle());
@@ -122,6 +138,5 @@ public class DBUtil {
 			System.out.println("작성자: " + boardVOList.get(0).getBwriter());
 			System.out.println("날짜: " + boardVOList.get(0).getBdate());
 			System.out.println("#######################################");
-
 	}
 }
