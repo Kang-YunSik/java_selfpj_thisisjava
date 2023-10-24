@@ -25,6 +25,10 @@ public class BoardVO {
         this.bdate = bdate;
     }
 
+    public BoardVO(int bno) {
+        this.bno = bno;
+    }
+
     public int getBno() {
         return bno;
     }

@@ -15,7 +15,7 @@ public class BoardMain {
 		// Mybatis 연동 확인
 		db.init();
 
-		// 게시판 열 출력
+		// 게시판 틀 출력
 		db.homeBoard();
 
 		// 게시판 목록 출력
@@ -62,11 +62,26 @@ public class BoardMain {
 				}
 				System.out.println("-----------------------------------------------------------------");
 
+				// 게시판 틀 출력
+				db.homeBoard();
+
 				// add된 게시판 목록 출력
 				nowBoard.printNowBoard(boardList);
 
 				// 메인 메뉴 출력
 				db.mainMenu();
+
+			} else if (cmd.equals("2")) {
+				System.out.println();
+				System.out.println("[게시글 읽기]");
+				System.out.print("bno: ");
+				String bno = scan.nextLine();
+
+
+				db.readBoard(Integer.parseInt(bno));
+
+
+
 
 			}
 

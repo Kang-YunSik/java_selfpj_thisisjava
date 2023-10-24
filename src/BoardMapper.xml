@@ -21,5 +21,11 @@
 		ORDER BY bno DESC
 	</select>
 
+	<select id="readBoard" resultType="int">
+		SELECT *
+		FROM boards
+		Where 'bno' = #{bno}
+	</select>
+
   
 </mapper>
