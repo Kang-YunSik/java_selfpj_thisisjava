@@ -18,6 +18,7 @@ public class DBUtil {
 	SqlSessionFactory sqlSessionFactory; // mybatis SqlSessionFactory 필드 생성
 
 
+	// db 연동 확인 메소드
 	public void init(){
 		try {
 			String resource = "mybatis-config.xml";
@@ -33,6 +34,7 @@ public class DBUtil {
 
 	}
 
+	// Create 메소드
 	public void insertBoard(String btitle, String bcontent, String bwriter) {
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -42,6 +44,7 @@ public class DBUtil {
 		session.commit(); // update, delete, insert
 	}
 
+	// Read 메소드
 	public ArrayList<BoardVO> getBoard(){
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
@@ -50,6 +53,7 @@ public class DBUtil {
 		return boardVOList;
 	}
 
+	// 게시판 열 출력 메소드
 	public void homeBoard(){
 		System.out.println();
 		System.out.println("[게시판 목록]");
@@ -58,21 +62,35 @@ public class DBUtil {
 		System.out.println("-----------------------------------------------------------------");
 	}
 
+	// 메인메뉴 출력 메소드
 	public void mainMenu(){
 		System.out.println("-----------------------------------------------------------------");
 		System.out.println("메인 메뉴 : 1.create | 2.read | 3.clear | 4.exit");
 		System.out.print("메뉴 선택 : ");
 	}
 
+	// create의 서브메뉴 출력 메소드
 	public void createSubMenu(){
 		System.out.println("-----------------------------------------------------------------");
 		System.out.println("보조 메뉴 : 1.Ok | 2.Cancel");
 		System.out.print("메뉴 선택 : ");
 	}
 
+	// 종료 메소드
 	public void exit(){
 		System.out.println();
 		System.out.println("게시판 기능을 종료합니다. 이용해주셔서 감사합니다.");
 		System.exit(0);
+	}
+
+	public void printNowBoard(ArrayList<BoardVO> boardVOList) {
+
+		for(int i = 0; i < boardVOList.size(); i++) {
+			System.out.printf("%-6s%-12s%-40s%-40s\n",
+					boardVOList.get(i).getBno(),
+					boardVOList.get(i).getBwriter(),
+					boardVOList.get(i).getBdate(),
+					boardVOList.get(i).getBtitle());
+		}
 	}
 }
