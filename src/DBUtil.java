@@ -79,6 +79,15 @@ public class DBUtil {
 		session.commit(); // update, delete, insert
 	}
 
+	// 게시글 전체 삭제 메소드 (DELETE)
+	public void clearBoard(){
+		SqlSession session = sqlSessionFactory.openSession();
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		mapper.clearBoard();
+
+		session.commit();
+	}
+
 	// 게시판 틀 출력 메소드
 	public void homeBoard(){
 		System.out.println();

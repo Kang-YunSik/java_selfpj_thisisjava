@@ -144,6 +144,32 @@ public class BoardMain {
 				// 메인 메뉴 출력
 				db.mainMenu();
 
+			} else if (cmd.equals("3")) {
+
+				db.okSubMenu();
+				String createSubMenuNo = scan.nextLine();
+
+				switch (createSubMenuNo) {
+					case "1":
+						db.clearBoard();
+						System.out.println("[게시물 전체 삭제 완료]");
+						break;
+
+					case "2":
+						System.out.println("[게시물 전체 삭제 취소]");
+						break;
+				}
+				// 게시판 최신화
+				boardList = db.getBoard();
+
+				// 게시판 틀 출력
+				db.homeBoard();
+
+				// 게시판 목록 출력
+				nowBoard.printNowBoard(boardList);
+
+				// 메인 메뉴 출력
+				db.mainMenu();
 			}
 		}
 	}

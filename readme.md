@@ -1,9 +1,18 @@
-### 질문
+### 공부할 목록
 1. BoardVO 클래스에서 BoardVO메소드를 선언할 때 
-    매개변수 개수별로 여러개 선언하던데 맞는건지?
-2. DBUtil 클래스에 내가 만들고 싶은 메서드를 만들고
-   Main 함수 안에 그 메서드를 호출하는 방식이 맞는건지?
+    매개변수 개수별로 여러개 선언하던데 맞는건지? (어떤 개념인건지)
+2. interface 개념
+3. Mapper.xml에서 Mybatis 속성 값 (resultType, parameterType 등등)
+4. Mybatis 클래스인지 뭔지, DBUtil 클래스 해석
+   1. public void updateBoard(int bno, String btitle, String bcontent, String bwriter){
+      SqlSession session = sqlSessionFactory.openSession();
+      BoardMapper mapper = session.getMapper(BoardMapper.class);
+      BoardVO boardVO = new BoardVO(bno, btitle, bcontent, bwriter);
+      mapper.updateBoard(boardVO);
 
+   session.commit();
+   }
+5. 제네릭 개념, 매개변수 개념
 
 ### 개인 피드백
 1. 게시글 목록 출력할 때, 자릿수 맞춤

@@ -30,6 +30,10 @@
 		WHERE bno = #{bno}
 	</delete>
 
+	<delete id="clearBoard" parameterType="BoardVO">
+		DELETE FROM boards
+	</delete>
+
 	<update id="updateBoard" parameterType="BoardVO">
 		UPDATE boards SET
 			btitle = #{btitle},

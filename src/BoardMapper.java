@@ -6,4 +6,5 @@ public interface BoardMapper {
     public ArrayList<BoardVO> readBoard(int bno);
     public void deleteBoard(int bno);
     public void updateBoard(BoardVO boardVO);
+    public void clearBoard();
 }
