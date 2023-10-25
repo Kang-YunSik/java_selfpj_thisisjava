@@ -125,7 +125,7 @@ public class DBUtil {
 		System.exit(0);
 	}
 
-	// 게시판 출력 형식 메소드
+	// 게시판 리스트 출력 형식 메소드
 	public void printNowBoard(ArrayList<BoardVO> boardVOList) {
 
 		for(int i = 0; i < boardVOList.size(); i++) {
