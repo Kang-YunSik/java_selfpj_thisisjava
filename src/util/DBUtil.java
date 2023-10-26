@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DBUtil {
 
 	// jdbc 사용자 정보 입력
-	String url = "jdbc:mariadb://127.0.0.1:3306/java_selfpj_thisisjava"; // addr_prj: 데이터가 저장될 스키마
+	String url = "jdbc:mariadb://127.0.0.1:3306/java_selfpj_thisisjava"; // java_selfpj_thisisjava: 데이터가 저장될 스키마
 	String user = "root"; // 아이디
 	String pass = "12345"; // 비밀번호
 	SqlSessionFactory sqlSessionFactory; // mybatis SqlSessionFactory 필드 생성
