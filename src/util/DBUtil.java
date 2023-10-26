@@ -1,3 +1,5 @@
+package util;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,7 +21,7 @@ public class DBUtil {
 	// db 연동 확인 메소드. 최초 실행 메소드
 	public void init(){
 		try {
-			String resource = "mybatis-config.xml";
+			String resource = "util/mybatis-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 
 			// SqlSessionFactory 빌드하기
