@@ -4,7 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="util.BoardMapper">
 
-	<!-- 해당 sql을 메서드와 연결해서 처리. id는 메서드명, resultType 리턴, parameterType 매개변수 -->
+	<!--
+	 [MyBatis_Mapper XML 파일_요소와 속성]
+	 ## 공식 문서: https://mybatis.org/mybatis-3/ko/sqlmap-xml.html
+	 ## MyBatis는 select 요소의 강력한 기능을 탑재했다.
+	 1. <select> 요소의 속성들 : 데이터베이스에 새로운 레코드를 삽입
+	 	id: 구문의 이름 (메소드명)
+	 	parameterType: 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래스명이나 별칭
+	 					(패키지경로.필드 정의한 클래스명=VO클래스명)
+	 	resultType: 쿼리의 결과를 매핑할 Java 객체의 타입
+	2. <insert>
+		parameterType: SQL 쿼리에 전달되는 매개변수 객체의 타입
+		statementType: SQL문의 종류
+	3. <update>
+		parameterType: SQL 쿼리에 전달되는 매개변수 객체의 타입
+		statementType: SQL문의 종류
+	4. <delete>
+		parameterType: SQL 쿼리에 전달되는 매개변수 객체의 타입
+		statementType: SQL문의 종류
+	-->
+
 
 	<!-- insertBoard 메소드의 sql문 -->
     <insert id="insertBoard" parameterType="util.BoardVO">
