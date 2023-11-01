@@ -37,6 +37,11 @@ public class DBUtil {
 	// 게시글 작성 메소드 (CREATE)
 	public void insertBoard(String btitle, String bcontent, String bwriter) {
 		SqlSession session = sqlSessionFactory.openSession();
+		// [getMapper(BoardMapper.class)의 개념
+		// 1. getMapper() 메소드는 MyBatis에서 제공하는 메소드로 Mapper를 얻는 기능이다.
+		// 2. BoardMapper.class 매개변수는 BoardMapper 이름의 인터페이스를 찾고 해당 인터페이스를 구현한 객체(mapper)를 생성
+		//    -> 즉, getMapper(BoardMapper.class)는 BoardMapper라는 매퍼 인터페이스에 대한 객체를 생성하고,
+		//       이를 이용하여 데이터베이스 작업을 수행할 수 있게 합니다
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		BoardVO boardVO = new BoardVO(btitle, bcontent, bwriter);
 		mapper.insertBoard(boardVO);
