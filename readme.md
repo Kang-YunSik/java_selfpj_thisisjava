@@ -30,8 +30,9 @@
 
 ## 🛠 개인 피드백
 * 제네릭 개념, List 개념
-* BoardVO 클래스에서 BoardVO메소드를 선언할 때
-   매개변수 개수별로 여러개 선언하던데 맞는건지? (어떤 개념인건지)
+* <s> BoardVO 클래스에서 BoardVO메소드를 선언할 때
+   매개변수 개수별로 여러개 선언하던데 맞는건지? (어떤 개념인건지)</s>
+  * [생성자의 개념](https://github.com/Kang-YunSik/java_selfpj_thisisjava/commit/3daf996f6efa7324f635071fe656bbd78d2f3b23)
 * interface 개념과 제네릭으로 정의한 것과 클래스로 정의한 것의 차이점
 * <s>Mapper.xml에서 Mybatis 속성 값 (resultType, parameterType 등등)</s>
   * [@MyBatis의 Mapper.xml에 작성되는 요소와 속성](https://github.com/Kang-YunSik/java_selfpj_thisisjava/commit/5b900491007eb507a6ff5839755a1c0d087aa3cc)   
