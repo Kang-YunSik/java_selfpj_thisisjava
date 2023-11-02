@@ -33,15 +33,8 @@
 * BoardVO 클래스에서 BoardVO메소드를 선언할 때
    매개변수 개수별로 여러개 선언하던데 맞는건지? (어떤 개념인건지)
 * interface 개념과 제네릭으로 정의한 것과 클래스로 정의한 것의 차이점
-* Mapper.xml에서 Mybatis 속성 값 (resultType, parameterType 등등)
-* Mybatis 클래스(getMapper, mapper 등)인지 뭔지, DBUtil 클래스 해석
-``` java
-public void updateBoard(int bno, String btitle, String bcontent, String bwriter){
-   SqlSession session = sqlSessionFactory.openSession();
-   BoardMapper mapper = session.getMapper(BoardMapper.class);
-   BoardVO boardVO = new BoardVO(bno, btitle, bcontent, bwriter);
-   mapper.updateBoard(boardVO);
-   
-   session.commit();
-   }
-```
+* <s>Mapper.xml에서 Mybatis 속성 값 (resultType, parameterType 등등)</s>
+  * [@MyBatis의 Mapper.xml에 작성되는 요소와 속성](https://github.com/Kang-YunSik/java_selfpj_thisisjava/commit/5b900491007eb507a6ff5839755a1c0d087aa3cc)   
+* <s>Mybatis 클래스(getMapper, mapper 등)인지 뭔지, DBUtil 클래스 해석</s>
+  * [@Mapper의 개념](https://github.com/Kang-YunSik/java_selfpj_thisisjava/commit/c10450ae871770318d5d47ad2ef0e50b466e73a3)   
+  * [getMapper 메소드의 개념](https://github.com/Kang-YunSik/java_selfpj_thisisjava/commit/5aec5f0c39eb39c29a3cfab6fc78f301864377f9)   
